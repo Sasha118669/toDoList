@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <section  class="content">
+
+        <header class="header">
+            <h1 class="title">Список задач:</h1>
+
+            <input type="text" id="creator" placeholder="Новая задача...">
+            <button type="button" id="add">add</button>
+        </header>
+
+
+        <main class="main">
+            <ul class="classList">
+
+                <!-- <li class="task">
+                <input type="text" placeholder="Задача1">
+                    <button>save</button>
+                    <button>edit</button>
+                    <button>remove</button>
+                    </li> 
+
+    <li class="task">
+    <input type="text" placeholder="Задача2">
+             <button>save</button>
+           <button>edit</button>
+           <button>remove</button>
+             </li> 
+
+      <li class="task">
+         <input type="text" placeholder="Задача3">
+             <button>save</button>
+               <button>edit</button>
+              <button>remove</button>
+             </li>   -->
+            </ul>
+        </main>
+
+
+        <footer class="footer">
+        <div class="footerBtn">
+            <button type="button" id="saveAll">Сохранить</button>
+            <button type="button" id="removeAll">Отчистить</button>
+            <button type="button" id="editAll">Редактировать</button>
+        </div>
+
+        </footer>
+
+    </section>
+    <script src="/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+html{
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+}
+.content{
+    max-width: 420px;
+    border: 2px solid;
+}
+input:focus {
+    outline: none;
+  }
+.header{
+    background-color: rgb(84, 135, 186);
+    border: .5px solid;
+}
+.title{
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2.3rem;
+color: white;
+}
+#creator{
+    width: 80%;
+    height: 2rem;
+    font-size: 1.3rem;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+#add{
+   border: none;
+   border-radius: 5px;
+   background-color: white;
+    font-size: 1.5rem;
+}
+.main li{
+    list-style: none;
+}
+.classList{
+margin: 5px;
+padding: 5px;
+}
+.task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+.task input{
+    width: 100%;
+    height: 25px;
+}
+.task button {
+    margin: 2px;
+    font-size: 1.2rem;
+    width: fit-content;
+}
+
+.save-task, .edit-task, .remove-task{
+    margin: 2px;
+    font-size: 1.2rem;
+    width: fit-content;
+}
+.footerBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#saveAll, #removeAll, #editAll{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(51, 114, 177);
+    color: white;
+    font-size: 1.2rem;
+    margin: 5px;
+    padding: 5px;
+    width: fit-content;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+
+    const creator = document.getElementById('creator');
+    const taskList = document.querySelector(".classList");
+
+//функция для добавления задания 
+    const createTask = (text = '')=>{
+      if(!text.trim()) return;
+      const taskItem = document.createElement('li');
+
+      taskItem.textContent = text;
+      taskItem.classList.add('task-item');
+///////////////////////////////////////////////////////////////////////
+const saveButton = createSaveButton(taskItem);
+      taskItem.appendChild(saveButton);
+
+///////////////////////////////////////////////////////////////////////
+const editButton = createEditButton(taskItem);
+      taskItem.appendChild(editButton);
+
+///////////////////////////////////////////////////////////////////////
+const removeButton = createRemoveButton(taskItem);
+taskItem.appendChild(removeButton);
+
+///////////////////////////////////////////////////////////////////////
+
+      taskList.appendChild(taskItem);//это относиться к 'createElement'
+    };
+
+    //функция для добавления кнопки изминения задания
+        const createSaveButton = (taskItem)=>{
+          const saveButton = document.createElement('button');
+          saveButton.textContent = 'save';
+          saveButton.classList.add('save-task');
+          return saveButton;
+        };
+
+    //функция для добавления кнопки изминения задания
+        const createEditButton = (taskItem)=>{
+          const editButton = document.createElement('button');
+          editButton.textContent = 'edit';
+          editButton.classList.add('edit-task');
+          return editButton;
+        };
+
+//функция для добавления кнопки удаления задания
+    const createRemoveButton = (taskItem)=>{
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'remove';
+      removeButton.classList.add('remove-task');
+      return removeButton;
+    };
+
+// функция для сробатования функций по нажатию на соотвецтвуюшее кнопки 
+document.addEventListener('click', (event)=>{
+
+  if(event.target.id === 'add' && creator.value.trim() !== ''){
+   createTask(creator.value.trim());
+   creator.value = '';
+
+  } else if(event.target.classList.contains('save-task')){
+   
+
+  } else if(event.target.classList.contains('edit-task')){
+      const input = document.createElement('input')
+      input.type = 'text';
+      const taskInput = document.createElement('input');
+      taskItem.appendChild(taskInput);
+    
+
+   }else if(event.target.classList.contains('remove-task')){
+   event.target.parentElement.remove()
+
+  } else if(event.target.id === 'removeAll' && taskList.innerHTML !== ''){
+taskList.innerHTML ='';
+  }
+ })
+});
+

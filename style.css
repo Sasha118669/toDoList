@@ -1,0 +1,100 @@
+html{
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+}
+.content{
+    margin: auto;
+    margin-top: 10vh;
+    max-width: 420px;
+    border: 2px solid;
+}
+input:focus {
+    outline: none;
+  }
+.header{
+    background-color: rgb(84, 135, 186);
+    border: .5px solid;
+}
+.title{
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2.3rem;
+color: white;
+}
+#creator{
+    width: 80%;
+    height: 2rem;
+    font-size: 1.3rem;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+#add{
+   border: none;
+   border-radius: 5px;
+   background-color: white;
+    font-size: 1.5rem;
+}
+.main li{
+    list-style: none;
+}
+.classList{
+margin: 3px;
+padding: 1px;
+/* border: 2px solid red; */
+}
+/* .task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+.task input{
+    width: 100%;
+    height: 25px;
+}
+.task button {
+    margin: 2px;
+    font-size: 1.2rem;
+    width: fit-content;
+} */
+.task-item{
+    margin: 5px;
+    padding: 5px;
+    width: fit-content;
+    font-size: 22px;
+    display: flex;
+    flex-wrap: wrap;
+/* border: 2px solid; */
+}
+.task-item::before {
+    content: "• ";
+    font-size: 20px; 
+    margin-right: 5px; 
+    color: black; 
+}
+.save-task, .edit-task, .remove-task{
+    margin: 2px;
+    font-size: 1.2rem;
+    width: fit-content;
+    background-color: rgb(84, 135, 186);
+}
+.footerBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#saveAll, #removeAll, #editAll{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(51, 114, 177);
+    color: white;
+    font-size: 1.2rem;
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+}
